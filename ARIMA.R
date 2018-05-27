@@ -173,14 +173,15 @@ subset.dongsti <- subset(bj_aq_data_nonulls, station_id == "dongsi_aq")
   auto.arima(deseasonal_cnt, seasonal=FALSE)  
   
   fit<-auto.arima(deseasonal_cnt, seasonal=FALSE)
+  
   tsdisplay(residuals(fit), lag.max=45, main='(1,0,1) Model Residuals')
   
-  fit2 = arima(deseasonal_cnt, order=c(1,0,8))
+  fit2 = arima(deseasonal_cnt, order=c(1,0,7))
   
   fit2
   
   #no seasonality
-tsdisplay(residuals(fit2), lag.max=15, main='Seasonal Model Residuals')
+tsdisplay(residuals(fit2), lag.max=20, main='Seasonal Model Residuals')
 
 fcast <- forecast(fit2, h=48)
 plot(fcast)
@@ -193,4 +194,12 @@ seas_fcast <- forecast(fit_w_seasonality, h=48)
 plot(seas_fcast)
 
 summary(seas_fcast)
+class(seas_fcast)
+seas_fcast <- data.frame(seas_fcast)
+seas_fcast$hour <- 0:22
+str(seas_fcast)
+seas_fcast$rowname
 
+seas_fcast$testrow <- row.names(seas_fcast)
+
+rownames(seas_fcast) <- 0:47
