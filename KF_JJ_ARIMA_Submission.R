@@ -3,7 +3,7 @@ rm(list=ls()) # Clear objects from Memory
 cat("\014") # Clear Console
 
 library(data.table)
-
+setwd("C:/Users/Kelse/Documents/GitHub/DS420_Factoria")
 
 # set start and end date
 

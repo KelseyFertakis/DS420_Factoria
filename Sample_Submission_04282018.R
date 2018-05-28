@@ -28,8 +28,8 @@ get_data_from_api <- function(base_url, api, city, start_time, end_time, token, 
 
 team_token <- "42e2da041f15c8ff9c6cb4855b1bf01a37d1b7be90f08c1243ebc336cacffd8f"
 data_token <- '2k0d1d8' # This is the ID applied to all participants to get the data. Do not change it.
-start_time <- '2018-04-28-0'
-end_time <- '2018-04-28-23'
+start_time <- '2018-05-28-0'
+end_time <- '2018-05-28-23'
 base_url <- "https://biendata.com/competition"
 aqi_url <- "https://biendata.com/competition/airquality"
 met_url <- "https://biendata.com/competition/meteorology"
@@ -62,12 +62,12 @@ for (city in cities){
 ###################################################################
 # Main chunk of codes to upload data to submission API for evaluation
 ###################################################################
-forecasting_file <- "C:/Users/Kelse/Documents/UW_MachineLearning420/KDDCupTest/sample_submission.csv"
+forecasting_file <- "C:/Users/Kelse/Documents/UW_MachineLearning420/KDDCupTest/ARIMA_5282018.csv"
 post_result <- POST(submission_url, body=list(files=upload_file(forecasting_file, type="text/csv"), 
                                               user_id=user_id, 
                                               team_token=team_token,
-                                              description="sample",
-                                              filename="sample_submission.csv"))
+                                              description="ARIMA",
+                                              filename="ARIMA_5282018.csv"))
 if (post_result$status_code == 200){
   print("Forecasts successfully submitted for evaluation")
 }
